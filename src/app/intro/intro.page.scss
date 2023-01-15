@@ -1,0 +1,15 @@
+ion-slides {  
+	height: 100%;
+	--bullet-background-active: var(--ion-color-app-primary);
+}
+
+ion-button {
+	--background: var(--ion-color-app-primary);
+		--background-hover: var(--ion-color-app-primary-shade);
+	--background-activated: var(--ion-color-app-primary-shade);
+	--background-focused: var(--ion-color-app-primary-shade);
+}
+
+.mb-img {
+		margin-bottom: 3rem;
+}
