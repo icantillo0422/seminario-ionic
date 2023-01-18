@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-intro',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class IntroPage implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private storage: Storage ) {}
 
   slideOptions = {
     initialSlide: 0,
@@ -40,7 +41,8 @@ export class IntroPage implements OnInit {
       hasAction: true,
       textButton: '¡Vamos!',
       action: () => {
-        this.router.navigate(['/home'])
+        this.storage.set('isIntroShowed', true)
+        this.router.navigate(['/home']);
       }
     },
     {
