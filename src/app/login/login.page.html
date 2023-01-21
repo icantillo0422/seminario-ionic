@@ -1,0 +1,65 @@
+<ion-content [fullscreen]="true">
+  <form class="ion-padding-top flex align-items-center h-100" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-item fill="outline">
+            <ion-input 
+              type="email" 
+              placeholder="Ingresa aquí tu correo 💌"
+              formControlName="email"
+            ></ion-input>
+            <ng-container *ngFor="let validation of validationMessage.email">
+              <ion-note 
+                *ngIf="(
+                  loginForm.get('email')?.hasError(validation.type) && 
+                  (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
+                )" 
+                slot="error"
+              >
+                {{ validation.message }}
+              </ion-note>
+            </ng-container>              
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-item fill="outline">
+            <ion-input 
+              type="password" 
+              placeholder="Ingresa tu contraseña 🙈"
+              formControlName="password"
+            ></ion-input>    
+            <ng-container *ngFor="let validation of validationMessage.password">
+              <ion-note 
+                *ngIf="(
+                  loginForm.get('password')?.hasError(validation.type) && 
+                  (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)
+                )" 
+                slot="error"
+              >
+                {{ validation.message }}
+              </ion-note>
+            </ng-container>         
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-justify-content-center flex">
+          <ion-button
+            class="btn-primary"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Ingresa
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <p>¿Aún no tienes una cuenta 🤔?</p>
+          <a class="cursor-pointer" (click)="goToRegister()">👉 Crea una aquí 👈</a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
