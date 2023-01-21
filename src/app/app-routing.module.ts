@@ -2,24 +2,29 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { IntroGuard } from './guards/intro.guard';
 import { HomeGuard } from './guards/home.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'intro',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule), canActivate: [IntroGuard]
-  },  
-  {
     path: 'intro',
-    loadChildren: () => import('./intro/intro.module').then( m => m.IntroPageModule), canActivate: [HomeGuard]
+    loadChildren: () => import('./intro/intro.module').then( m => m.IntroPageModule), canActivate: [IntroGuard, HomeGuard]
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule), canActivate: [HomeGuard]
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule), canActivate: [LoginGuard]
   },
 ];
 

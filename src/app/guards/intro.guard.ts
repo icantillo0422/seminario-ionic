@@ -14,8 +14,7 @@ export class IntroGuard implements CanActivate {
     const isIntroShowed = await this.storage.get('isIntroShowed')    
 
     if (isIntroShowed) {
-      this.router.navigateByUrl('/home');
-      console.log('Mandalo pal home')
+      this.router.navigateByUrl('/login');
       return false
     }
 

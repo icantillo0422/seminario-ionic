@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="goToBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form class="ion-padding-top flex align-items-center h-100" [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+    <ion-grid class="ion-margin-top">
+      <ion-row>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-item fill="outline">
+            <ion-input 
+              placeholder="Ingresa aquí tu nombre"
+              formControlName="name"
+            ></ion-input>
+            <ng-container *ngFor="let validation of validationMessage.name">
+              <ion-note 
+                *ngIf="(
+                  registerForm.get('name')?.hasError(validation.type) && 
+                  (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)
+                )" 
+                slot="error"
+              >
+                {{ validation.message }}
+              </ion-note>
+            </ng-container>              
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-item fill="outline">
+            <ion-input 
+              type="text" 
+              placeholder="Ingresa aquí tu apellido"
+              formControlName="last_name"
+            ></ion-input>
+            <ng-container *ngFor="let validation of validationMessage.last_name">
+              <ion-note 
+                *ngIf="(
+                  registerForm.get('last_name')?.hasError(validation.type) && 
+                  (registerForm.get('last_name')?.dirty || registerForm.get('last_name')?.touched)
+                )" 
+                slot="error"
+              >
+                {{ validation.message }}
+              </ion-note>
+            </ng-container>              
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-list>
+            <ion-item fill="outline">
+              <ion-select interface="popover" placeholder="Tipo de documento" formControlName="document_type">
+                <ion-select-option 
+                  *ngFor="let documentType of documentTypeList" 
+                  [value]="documentType.id"
+                >
+                  {{ documentType.text }}
+              </ion-select-option>
+              </ion-select>
+              <ng-container *ngFor="let validation of validationMessage.document_type">
+                <ion-note 
+                  *ngIf="(
+                    registerForm.get('document_type')?.hasError(validation.type) && 
+                    (registerForm.get('document_type')?.dirty || registerForm.get('document_type')?.touched)
+                  )" 
+                  slot="error"
+                >
+                  {{ validation.message }}
+                </ion-note>
+              </ng-container> 
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-item fill="outline">
+            <ion-input 
+              type="text" 
+              placeholder="Número de documento"
+              formControlName="document_number"
+            ></ion-input>
+            <ng-container *ngFor="let validation of validationMessage.document_number">
+              <ion-note 
+                *ngIf="(
+                  registerForm.get('document_number')?.hasError(validation.type) && 
+                  (registerForm.get('document_number')?.dirty || registerForm.get('document_number')?.touched)
+                )" 
+                slot="error"
+              >
+                {{ validation.message }}
+              </ion-note>
+            </ng-container>              
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-list>
+            <ion-item fill="outline">
+              <ion-select interface="popover" placeholder="Carrera universitaria" formControlName="career">
+                <ion-select-option 
+                  *ngFor="let career of careerList" 
+                  [value]="career.id"
+                >
+                  {{ career.text }}
+                </ion-select-option>
+              </ion-select>
+              <ng-container *ngFor="let validation of validationMessage.career">
+                <ion-note 
+                  *ngIf="(
+                    registerForm.get('career')?.hasError(validation.type) && 
+                    (registerForm.get('career')?.dirty || registerForm.get('career')?.touched)
+                  )" 
+                  slot="error"
+                >
+                  {{ validation.message }}
+                </ion-note>
+              </ng-container> 
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-item fill="outline">
+            <ion-input 
+              type="email" 
+              placeholder="Ingresa aquí tu correo"
+              formControlName="email"
+            ></ion-input>
+            <ng-container *ngFor="let validation of validationMessage.email">
+              <ion-note 
+                *ngIf="(
+                  registerForm.get('email')?.hasError(validation.type) && 
+                  (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)
+                )" 
+                slot="error"
+              >
+                {{ validation.message }}
+              </ion-note>
+            </ng-container>              
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-padding-bottom mx-auto" size="12" sizeMd="8">
+          <ion-item fill="outline">
+            <ion-input 
+              type="password" 
+              placeholder="Ingresa tu contraseña"
+              formControlName="password"
+            ></ion-input>    
+            <ng-container *ngFor="let validation of validationMessage.email">
+              <ion-note 
+                *ngIf="(
+                  registerForm.get('password')?.hasError(validation.type) && 
+                  (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)
+                )" 
+                slot="error"
+              >
+                {{ validation.message }}
+              </ion-note>
+            </ng-container>         
+          </ion-item>
+        </ion-col>        
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-justify-content-center flex">
+          <ion-button
+            class="btn-primary"
+            type="submit"
+            [disabled]="!registerForm.valid"
+          >
+            Registrarse
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

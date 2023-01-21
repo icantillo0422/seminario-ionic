@@ -42,7 +42,7 @@ export class IntroPage implements OnInit {
       textButton: '¡Vamos!',
       action: () => {
         this.storage.set('isIntroShowed', true)
-        this.router.navigate(['/home']);
+        this.router.navigateByUrl('/menu');
       }
     },
     {
