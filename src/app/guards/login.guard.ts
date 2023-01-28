@@ -14,7 +14,7 @@ export class LoginGuard implements CanActivate {
   }
 
   async canActivate(){
-    const isLogin = await this.storage.get('isLogin');
+    const isLogin = await this.storage?.get('isLogin') || false;
 
     if ( !isLogin ) {
       this.navController.navigateForward('/login')

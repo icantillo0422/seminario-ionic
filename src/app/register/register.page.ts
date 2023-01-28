@@ -46,17 +46,18 @@ export class RegisterPage implements OnInit {
     ],
   };
 
+  // Dejé pegado el "cc" y "sistemas", dado que no sé cuales son los valores en el back y estos son los que me sirvieron.
   documentTypeList = [
-    { id: 'c.c', text: 'Cedula de ciudadania' },
-    { id: 't.i', text: 'Tarjeta de identidad' },
-    { id: 'c.e', text: 'Cedula de extrangeria' },
+    { id: 'cc', text: 'Cedula de ciudadania' },
+    { id: 'ti', text: 'Tarjeta de identidad' },
+    { id: 'ce', text: 'Cedula de extrangeria' },
   ]
 
   careerList = [
-    { id: 1, text: 'Ingeniería de Sistemas' },
-    { id: 2, text: 'Tecnología en Desarrollo de Software' },
-    { id: 3, text: 'Ingeniería Electrónica' },
-    { id: 4, text: 'Tecnología en Desarrollo en Sistemas Electrónicos' },
+    { id: 'sistemas', text: 'Ingeniería de Sistemas' },
+    { id: 'software', text: 'Tecnología en Desarrollo de Software' },
+    { id: 'electronica', text: 'Ingeniería Electrónica' },
+    { id: 'tecnologia', text: 'Tecnología en Desarrollo en Sistemas Electrónicos' },
   ]
 
   constructor(
@@ -96,8 +97,7 @@ export class RegisterPage implements OnInit {
 
   async register(data: any) {
     try {      
-      data.password = btoa(data.password)      
-      const res = this.authenticateService.registerUser(data);
+      const res: any = await this.authenticateService.registerUser(data);
   
       if( res.error ) {
         const toast = await this.toastController.create({

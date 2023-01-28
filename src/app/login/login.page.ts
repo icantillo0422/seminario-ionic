@@ -62,10 +62,12 @@ export class LoginPage implements OnInit {
 
   async login(data: any) {
     try {
-      await this.authenticateService.loginUser(data);
+      const res: any = await this.authenticateService.loginUser(data);
+
+      this.storage.set("user_id", res.data.user.id);
 
       this.storage.set('isLogin', true)
-      this.navController.navigateForward('/menu')
+      this.navController.navigateForward('/menu/home')
 
     } catch (error: any) {
       const toast = await this.toastController.create({

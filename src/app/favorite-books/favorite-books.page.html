@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let book of books" class="cursor-pointer" (click)="showBook(book)">
+    <ion-avatar>
+      <img src="{{ book.cover }}" />
+    </ion-avatar>
+    <ion-label>{{book.name}}</ion-label>
+  </ion-item>
+</ion-content>

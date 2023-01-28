@@ -28,7 +28,7 @@ export class IntroPage implements OnInit {
     },
     {
       title: 'SELECCIONA',
-      description: 'Selecciona los libros que deseas leer y audiolibros a escuchar 🔊🎧📚',
+      description: 'Selecciona los libros que deseas leer 📚',
       img: './assets/images/home/slide-2.svg',
       hasAction: false,
       textButton: '',
@@ -42,16 +42,8 @@ export class IntroPage implements OnInit {
       textButton: '¡Vamos!',
       action: () => {
         this.storage.set('isIntroShowed', true)
-        this.router.navigateByUrl('/menu');
+        this.router.navigateByUrl('/menu/home');
       }
-    },
-    {
-      title: '¡SLIDE DE MAS!',
-      description: 'Esto no va a estar en la APP',
-      img: './assets/images/home/slide-3.svg',
-      hasAction: false,
-      textButton: '¡Vamos!',
-      action: () => {}
     },
   ]
 

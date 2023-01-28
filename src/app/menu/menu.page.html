@@ -1,7 +1,27 @@
 <ion-split-pane contentId="content">
   <ion-menu contentId="content">
-    <ion-content>
-    </ion-content>
+    <div class="h-100 flex flex-col justify-between mt-2">
+      <div>
+        <ion-item class="cursor-pointer" (click)="goToHome()">
+          <ion-icon name="home-outline" slot="start"></ion-icon>
+          Inicio
+        </ion-item>
+  
+        <ion-item class="cursor-pointer" (click)="goToAuthors()">
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          Autores
+        </ion-item>
+  
+        <ion-item class="cursor-pointer" (click)="goToBooks()">
+          <ion-icon name="book-outline" slot="start"></ion-icon>
+          Libros
+        </ion-item>
+      </div>
+      <ion-item class="cursor-pointer" (click)="logout()">
+        <ion-icon name="log-out" slot="start"></ion-icon>
+        Salir
+      </ion-item>
+    </div>
   </ion-menu>
   <ion-router-outlet id="content" main></ion-router-outlet>
 </ion-split-pane>
