@@ -14,7 +14,7 @@ export class HomeGuard implements CanActivate {
     const isLogin = await this.storage.get('isLogin')    
 
     if (isLogin) {
-      this.navController.navigateForward('/menu')
+      this.navController.navigateForward('/menu/home')
       return false
     }
 

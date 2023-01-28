@@ -6,10 +6,29 @@
     </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">  
-	<ion-grid>
+	<ion-grid class="flex flex-col gap-1">
 		<ion-row>
 			<ion-col>
-				<h1 class="ion-text-center ion-padding-top"> Hola, soy el HOME </h1>
+				<ion-slides [options]="slideOptions">
+					<ion-slide *ngFor="let author of authors">
+						<ion-avatar class="flex flex-col align-items-center cursor-pointer" (click)="showBooks(author)">
+							<img src="{{author.photo}}"/>
+							<span>{{author.name}}</span>
+						</ion-avatar>
+					</ion-slide>
+				</ion-slides>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col *ngFor="let card of cards" size="6">
+				<ion-card class="cursor-pointer bg-primary" (click)="card.action()">
+					<ion-card-header>
+					  <ion-card-title>{{ card.title }}</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						<ion-icon name="{{card.icon}}"></ion-icon>
+					</ion-card-content>
+				</ion-card>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

@@ -1,0 +1,45 @@
+img {
+	height: 4rem;
+	width: 4rem;
+}
+
+ion-avatar {
+	height: 6rem;
+	width:  6em;
+	gap: .5rem;
+}
+
+ion-avatar span {
+	font-size: small;
+}
+
+ion-card {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100px;
+}
+
+ion-card ion-card-header {
+    padding: 10px 10px;
+}
+
+ion-card ion-card-content {
+    padding: 10px 10px;
+}
+
+ion-card-content ion-icon {
+    font-size: 30px;
+	color: white;
+}
+
+ion-card ion-card-title {
+    font-size: 20px;
+    text-transform: uppercase;
+	color: white;
+}
+
+ion-card ion-card-content {
+    font-size: .8em;
+    text-transform: lowercase;
+}

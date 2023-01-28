@@ -26,6 +26,30 @@ const routes: Routes = [
     path: 'menu',
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule), canActivate: [LoginGuard]
   },
+  {
+    path: 'authors',
+    loadChildren: () => import('./authors/authors.module').then( m => m.AuthorsPageModule)
+  },
+  {
+    path: 'books-modal',
+    loadChildren: () => import('./books-modal/books-modal.module').then( m => m.BooksModalPageModule)
+  },
+  {
+    path: 'books',
+    loadChildren: () => import('./books/books.module').then( m => m.BooksPageModule)
+  },
+  {
+    path: 'favorite-books',
+    loadChildren: () => import('./favorite-books/favorite-books.module').then( m => m.FavoriteBooksPageModule)
+  },
+  {
+    path: 'book-detail-modal',
+    loadChildren: () => import('./book-detail-modal/book-detail-modal.module').then( m => m.BookDetailModalPageModule)
+  },   {
+    path: 'author-detail',
+    loadChildren: () => import('./author-detail/author-detail.module').then( m => m.AuthorDetailPageModule)
+  },
+ 
 ];
 
 @NgModule({
